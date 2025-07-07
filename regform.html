@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: beige;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0;
+      padding: 40px 0;
+    }
+    .container {
+      padding: 30px;
+      background-color: azure;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h2 { color: black; }
+    label, input, select, .btn {
+      width: 90%;
+      margin: 10px 0;
+    }
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .btn {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn.submit { background: #4CAF50; color: white; }
+    .btn.reset { background: #FF6347; color: white; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register Here</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+      <label>First Name</label>
+      <input type="text" id="firstName" name="firstName" required />
+      <label>Last Name</label>
+      <input type="text" id="lastName" name="lastName" required />
+      <label>Username</label>
+      <input type="text" id="Username" name="Username" required />
+      <label>Password</label>
+      <input type="password" id="password" name="password" required />
+      <label>Confirm Password</label>
+      <input type="password" id="confirmPassword"
+name="confirmPassword" required />
+      <label>Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile"
+pattern="^[0-9]{10}$" required />
+      <label>Branch</label>
+      <select id="branch" required>
+        <option value="">Select</option>
+        <option value="cse">CSE</option>
+        <option value="ece">ECE</option>
+        <option value="eee">EEE</option>
+        <option value="it">IT</option>
+        <option value="aiml">AIML</option>
+      </select>
+      <label>Gender</label>
+      <select id="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <label>Date of Birth</label>
+      <input type="date" id="dob" name="dob" required />
+      <label>State</label>
+      <input type="text" id="state" name="state" required />
+      <label>Country</label>
+      <input type="text" id="country" name="country" required />
+      <button type="submit" class="btn submit">Submit</button>
+    </form>
+  </div>
+  <script>
+    function validateForm() {
+      const firstName = document.getElementById("firstName").value.trim();
+      const username = document.getElementById("Username").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const dob = document.getElementById("dob").value;
+      const state = document.getElementById("state").value.trim();
+      const country = document.getElementById("country").value.trim();
+      if (firstName.length < 6) {
+        alert("First Name must be at least 6 characters long.");
+        return false;
+      }
+      if (username.length < 6) {
+        alert("Username must be at least 6 characters long.");
+        return false;
+      }
+      if (!dob || !state || !country) {
+        alert("Please fill out all required fields.");
+        return false;
+      }
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+      }
+      window.location.href = "tq.html";
+      return false;
+    }
+  </script>
+</body>
+</html>
